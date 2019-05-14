@@ -16,6 +16,7 @@ p solution('camelCasingTest') # 'camel Casing Test'
 
 # The Best Practices:
 def solution(string)
+  # "\1" in this line means "first" matched group it self
   string.gsub /([A-Z])/, ' \1'
 end
 # The most clever answer:
