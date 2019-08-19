@@ -9,7 +9,6 @@ def get_middle(s)
   (s.size.odd?) ? s[(s.size / 2)] : s[(s.size - 1) / 2, 2]
 end
 
-
 p get_middle("test") # "es"
 p get_middle("testing") # "t"
 p get_middle("middle") # "dd"

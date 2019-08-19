@@ -14,6 +14,11 @@ def prime_string(s)
   (s + s).index(s, 1) == s.size
 end
 
+# using regular expression
+def prime_string(s)
+  s !~ /^(.+)(\1+)$/
+end
+
 p primeString("asdf") # should be true
 p primeString("abac") # should be true
 p primeString("qiuefgqiuefgqiuefg") # should be false

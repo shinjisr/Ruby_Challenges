@@ -37,17 +37,22 @@ end
 
 # Return the argument with all its lowercase characters removed.
 def destructive_uppercase(str)
-  # your code goes here
-  # return str.gsub(/[a-z]/, '') # an easy way to solve this question whith regular expression.
-  new_str = ""
-  str_idx = 0
-  while str_idx < str.length
-    ch = str[str_idx]
-    if ch == ch.upcase
-      new_str << ch
-    end
-    str_idx = str_idx + 1
-  end
+
+  # An easy way to solve this question whith regular expression.
+  # return str.gsub(/[a-z]/, '')
+
+
+  # new_str = ''
+  # str_idx = 0
+  # while str_idx < str.length
+  #   ch = str[str_idx]
+  #   new_str << ch if ch == ch.upcase
+  #   str_idx += 1
+  # end
+  # new_str
+
+  new_str = ''
+  str.chars.each { |i| new_str << i if i == i.upcase }
   new_str
 end
 
@@ -60,7 +65,7 @@ def my_reverse(arr)
   i = 0
   while i < arr.length
     reversed_arr.unshift(arr[i]) # 迭代檢查陣列內的每個元素，並從前面加入到 reversed_arr
-    i = i + 1
+    i += 1
   end
   reversed_arr
 end
@@ -73,15 +78,17 @@ end
 # separator as the second argument.
 def my_join(arr, separator)
   # return arr.join("#{separator}") # an easy solution
-  join = "" # set a string :join
+
+  join = '' # set a empty string
   idx = 0 # set while loop
   while idx < arr.length
-    join = join + arr[idx] # add element of arr to "join"
+    join += arr[idx] # add element of arr to "join"
 
     if idx != arr.length - 1
-      join = join + separator
+      join += separator
     end
-    idx = idx + 1
+
+    idx += 1
   end
   join
 end
@@ -95,16 +102,16 @@ def fizzbuzz
   arr_fizzbuzz = []
   i = 0
   while i < arr.length
-    if arr[i] % 3 == 0 && arr[i] % 5 == 0
-      arr_fizzbuzz << "fizzbuzz"
-    elsif arr[i] % 5 == 0
-      arr_fizzbuzz << "buzz"
-    elsif arr[i] % 3 == 0
-      arr_fizzbuzz << "fizz"
+    if (arr[i] % 3).zero? && (arr[i] % 5).zero?
+      arr_fizzbuzz << 'fizzbuzz'
+    elsif (arr[i] % 5).zero?
+      arr_fizzbuzz << 'buzz'
+    elsif (arr[i] % 3).zero?
+      arr_fizzbuzz << 'fizz'
     else
       arr_fizzbuzz << arr[i]
     end
-    i = i + 1
+    i += 1
   end
   return arr_fizzbuzz
   # arr.each do |x|
