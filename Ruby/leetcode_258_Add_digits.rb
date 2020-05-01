@@ -6,14 +6,14 @@
 # Output: 2
 # Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
 
-# def add_digits(num)
-#   if num >= 10
-#     result = num.to_s.chars.map(&:to_i).reduce(:+)
-#     add_digits(result)
-#   else
-#     puts num
-#   end
-# end
+def add_digits(num)
+  if num > 9
+    result = num.to_s.chars.map(&:to_i).reduce(:+)
+    add_digits(result)
+  else
+    p num
+  end
+end
 
 def add_digits(num)
   p num && (num % 9 || 9)
