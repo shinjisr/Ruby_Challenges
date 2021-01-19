@@ -4,7 +4,9 @@
 input = ARGV[0].to_i
 times = input
 
-# Iteration
+# =============================
+# Iteration （疊代）
+# =============================
 
 def factorial(n)
   ans = 1
@@ -17,17 +19,17 @@ def factorial(n)
 end
 
 # The oneliner solution
-# def factorial(n)
-  # (1..n).reduce(&:*)
-# end
+def factorial(n)
+  (1..n).reduce(&:*)
+end
 
 result = factorial(times)
 
 puts "The iteration result of factorial(#{times}) is: #{result}"
 
-#
-# Recursion
-#
+# =============================
+# Recursion （遞迴）
+# =============================
 
 def factorial2(n)
   return 1 if n == 0
