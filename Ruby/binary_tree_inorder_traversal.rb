@@ -62,25 +62,3 @@ end
 # [1,2,null,3,4]                     # => [3,2,4,1]
 # [5,4,7,3,null,2,null,-1,null,9,10] # = > [3,2,4,1]
 # [1, 2, 3, 4, 5, 6, 7]              # = > [4, 2, 5, 1, 6, 3, 7]
-
-def make_node(arr)
-  return nil if arr.empty?
-
-  node = TreeNode.new(arr.shift)
-end
-
-def conv_arr_to_bt(arr)
-  return nil if arr.nil?
-
-  @cur ||= TreeNode.new(arr.shift)
-
-  until @cur.nil?
-
-    break if arr.empty?
-    @cur.left = TreeNode.new(arr.shift)
-    break if arr.empty?
-    @cur.right = TreeNode.new(arr.shift)
-
-    @cur = @cur.left
-  end
-end
