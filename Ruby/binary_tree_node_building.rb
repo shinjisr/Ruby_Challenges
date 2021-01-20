@@ -1,3 +1,5 @@
+require 'byebug'
+# WIP: Trying to build Binary tree from array
 # Definition for a binary tree node.
 # =============================
 class TreeNode
@@ -26,50 +28,60 @@ def mk_node(arr)
   node = TreeNode.new(arr.shift)
 end
 
-root = mk_node(arr)
-def conv_arr_to_bt(arr)
-  return if arr&.empty? || arr.nil? || !arr.is_a?(Array)
-  root = mk_node(arr)
-  cur = root
-  until arr.empty?
-    p cur.val
-    p '===='
-    cur.left = mk_node(arr)
-    # break if arr.empty?
-
-    cur.right = mk_node(arr)
-
-    cur = cur.left
-  end
-
-  root
+def mk_node(val)
+  node = TreeNode.new(val)
 end
 
+# root = mk_node(arr)
+# def conv_arr_to_bt(arr)
+  # return if arr&.empty? || arr.nil? || !arr.is_a?(Array)
+  # root = mk_node(arr)
+  # cur = root
+  # until arr.empty?
+    # p cur.val
+    # p '===='
+    # cur.left = mk_node(arr)
+    # # break if arr.empty?
 
-arr.each_with_index do |e, i|
-  tmp = []
-  cur_idx = 0
+    # cur.right = mk_node(arr)
 
-  if tmp.empty?
-    cur_node = mk_node(e)
-    tmp << cur_node
-    cur_idx += 1
-  else
-    cur_node = tmp.last
-    if cur_node.left
-      cur_node = cur_node.left
-    elsif cur_node.right
-      cur_node = cur_node.right
-    end
-  end
+    # cur = cur.left
+  # end
 
-  tmp << cur_node
-  
-  cur_node.left = mk_node(e)
-  cur_node.right = mk_node(e)
-end
+  # root
+# end
+
 
 arr = [1, 2, 3, 4, 5, 6, 7]
+res = []
+cur_idx = 0
+arr.each_with_index do |e, i|
+# puts "ele: #{e}, i: #{i}"
+  # first element
+  if res.empty?
+    cur_node = mk_node(e)
+    res << cur_node
+    cur_idx = i
+  else
+    cur_idx = next_idx if move_idx
+    cur_node = res[cur_idx]
+    if e
+      if cur_node.left
+        cur_node.right = mk_node(e)
+        cur_idx = i
+        move_idx = true
+      else
+        cur_node.left = mk_node(e)
+        res << cur_node.left
+        next_idx = i
+        move_idx = false
+      end
+    end
+  end
+end
+
+# puts res[0]
+
 # p conv_arr_to_bt(arr)
 
 # This method only push to node's right with bigger number
@@ -107,6 +119,6 @@ def create_nodes(arr)
   arr.each { |e| pushNode(root, e) }
   root
 end
-byebug # comment
+# byebug # comment
 
-puts create_nodes(arr)
+# puts create_nodes(arr)
