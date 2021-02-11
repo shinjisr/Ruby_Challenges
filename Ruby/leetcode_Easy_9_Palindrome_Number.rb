@@ -22,13 +22,13 @@ Constraints:
 # my anwser:
 def is_palindrome1(x)
   return false if x < 0
-  return false if x < 10
+  return true if x < 10
   x == x.to_s.reverse.to_i
 end
 
 def is_palindrome2(x)
   return false if x < 0
-  return false if x < 10
+  return true if x < 10
   x.to_s == x.to_s.reverse
 end
 
@@ -36,16 +36,17 @@ end
 # @param {Integer} x
 # @return {Boolean}
 def is_palindrome3(x)
-    return false if x < 0
+  return false if x < 0
+  return true if x < 10
 
-    reverse = 0
-    curr = x
-    while curr > 0
-        last_digit = curr % 10
-        reverse = (reverse * 10) + last_digit
-        curr /= 10
-    end
-    reverse == x
+  reverse = 0
+  curr = x
+  while curr > 0
+      last_digit = curr % 10
+      reverse = (reverse * 10) + last_digit
+      curr /= 10
+  end
+  reverse == x
 end
 
 require 'benchmark'
@@ -59,14 +60,12 @@ require 'benchmark'
 # puts "Benchmark"
 # puts res
 
-begin
-  n = 1_000_000
-  test_case = 121
-  Benchmark.bm do |x|
-    x.report('is_palindrome1') { n.times { is_palindrome1(test_case) } }
-    x.report('is_palindrome2') { n.times { is_palindrome2(test_case) } }
-    x.report('is_palindrome3') { n.times { is_palindrome3(test_case) } }
-  end
+n = 1_000_000
+test_case = 121
+Benchmark.bm do |x|
+  x.report('is_palindrome1') { n.times { is_palindrome1(test_case) } }
+  x.report('is_palindrome2') { n.times { is_palindrome2(test_case) } }
+  x.report('is_palindrome3') { n.times { is_palindrome3(test_case) } }
 end
 
 =begin
