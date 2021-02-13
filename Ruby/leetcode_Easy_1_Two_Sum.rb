@@ -27,7 +27,7 @@ def two_sum2(nums, target)
   dict = {}
   nums.each_with_index do |num, idx|
     if dict[target - num]
-      return [hash[num], idx]
+      return [dict[target - num], idx]
     end
     dict[num] = idx
   end
@@ -37,9 +37,9 @@ def test_res(method, test_case, target)
   p send(method, test_case, target)
 end
 
-# test_res(:two_sum, [2,7,11,15], 9) # => [0, 1]
-# test_res(:two_sum, [3, 2, 4], 6)   # => [1, 2]
-# test_res(:two_sum, [3, 3], 6)      # => [0, 1]
+# test_res(:two_sum2, [2, 7, 11, 15], 9) # => [0, 1]
+# test_res(:two_sum2, [3, 2, 4], 6)      # => [1, 2]
+# test_res(:two_sum2, [3, 3], 6)         # => [0, 1]
 
 require 'benchmark'
 
