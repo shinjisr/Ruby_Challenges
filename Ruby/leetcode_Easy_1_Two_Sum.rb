@@ -17,18 +17,15 @@ def two_sum(nums, target)
   nums.each_with_index { |num, idx| hash[num] = idx }
   nums.each_with_index do |num, idx|
     diff = target - num
-    if hash[diff] && hash[diff] != idx
-      return [hash[diff], idx]
-    end
+    return [hash[diff], idx] if hash[diff] && hash[diff] != idx
   end
 end
 
 def two_sum2(nums, target)
   dict = {}
   nums.each_with_index do |num, idx|
-    if dict[target - num]
-      return [dict[target - num], idx]
-    end
+    return [dict[target - num], idx] if dict[target - num]
+
     dict[num] = idx
   end
 end
